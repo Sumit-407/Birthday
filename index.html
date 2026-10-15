@@ -1,0 +1,773 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Muskan 🐭💗</title>
+
+<style>
+:root {
+    --pink: #ff4f98;
+    --dark-pink: #d92e79;
+    --light-pink: #ffe5f0;
+    --text: #78314e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #050505;
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+button {
+    border: none;
+    padding: 14px 23px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s;
+    margin: 7px 3px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+button:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 4px;
+}
+
+.primary-btn {
+    background: var(--pink);
+    color: white;
+    box-shadow: 0 5px 22px #ff4f9855;
+}
+
+.secondary-btn {
+    background: white;
+    color: var(--dark-pink);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* START SCREEN */
+
+#startOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background:
+        radial-gradient(circle at center, #29101f, #050505 65%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 25px;
+    text-align: center;
+}
+
+.start-title {
+    color: #ff77b3;
+    font-family: monospace;
+    font-size: clamp(25px, 7vw, 40px);
+    text-shadow: 0 0 22px #ff4f9880;
+    margin-bottom: 20px;
+}
+
+.start-description {
+    color: #f4c8da;
+    line-height: 1.9;
+    margin-bottom: 24px;
+}
+
+.start-note {
+    font-size: 12px;
+    color: #999;
+    margin-top: 14px;
+}
+
+/* HACKER SCREEN */
+
+#hacker {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 22px;
+    background:
+        radial-gradient(circle at top, #102018, #030604 65%);
+}
+
+.terminal {
+    width: min(620px, 100%);
+    border: 1px solid #20ff8a;
+    border-radius: 15px;
+    padding: 23px;
+    background: #07100b;
+    box-shadow: 0 0 35px #00ff8820;
+}
+
+.terminal-header {
+    color: #20ff8a;
+    font-family: monospace;
+    font-size: 16px;
+    margin-bottom: 20px;
+    overflow-wrap: anywhere;
+}
+
+.terminal-subtitle {
+    color: #8bcea5;
+    font-family: monospace;
+    font-size: 11px;
+    margin-bottom: 20px;
+}
+
+#terminalText {
+    color: #a5ffc6;
+    line-height: 1.9;
+    font-family: monospace;
+    font-size: 13px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    min-height: 235px;
+}
+
+.loading {
+    width: 100%;
+    height: 5px;
+    border-radius: 10px;
+    background: #183321;
+    margin: 18px 0;
+    overflow: hidden;
+}
+
+#progress {
+    height: 100%;
+    width: 0%;
+    background: #20ff8a;
+    transition: width .3s;
+}
+
+.terminal-footer {
+    color: #20ff8a;
+    font-family: monospace;
+    font-size: 11px;
+}
+
+/* BIRTHDAY SCREEN */
+
+#birthday {
+    min-height: 100vh;
+    padding: 35px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+    text-align: center;
+    background:
+        radial-gradient(ellipse at top, #fff8fb, transparent 65%),
+        linear-gradient(140deg, #ffeaf3, #ffd1e5, #f7c2dc);
+    position: relative;
+    overflow: hidden;
+}
+
+.card {
+    position: relative;
+    z-index: 2;
+    width: min(470px, 100%);
+    padding: 30px 22px;
+    background: rgba(255, 255, 255, .76);
+    border: 1px solid rgba(255, 255, 255, .95);
+    border-radius: 28px;
+    box-shadow: 0 18px 60px #b9447830;
+    animation: cardAppear .9s ease both;
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.eyebrow {
+    color: #b45a83;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: clamp(34px, 9vw, 49px);
+    line-height: 1.14;
+    color: var(--dark-pink);
+    margin: 18px 0;
+    text-shadow: 0 3px 15px #ff4f9820;
+}
+
+.subtitle {
+    color: #82405c;
+    font-size: 14px;
+    line-height: 1.85;
+}
+
+.warning-box {
+    margin: 22px 0;
+    padding: 15px;
+    border: 1px dashed #ec8ab4;
+    border-radius: 16px;
+    background: #fff1f7;
+    font-size: 14px;
+    line-height: 1.9;
+    color: #8c345b;
+}
+
+.gift {
+    font-size: 75px;
+    cursor: pointer;
+    display: block;
+    margin: 16px auto;
+    background: transparent;
+    box-shadow: none;
+    animation: giftBounce 1.3s infinite;
+}
+
+@keyframes giftBounce {
+    0%, 100% {
+        transform: translateY(0) rotate(-4deg);
+    }
+    50% {
+        transform: translateY(-9px) rotate(4deg);
+    }
+}
+
+.gift:hover {
+    transform: scale(1.08);
+}
+
+#message {
+    margin-top: 25px;
+    padding: 22px 16px;
+    background: #fff5fa;
+    border: 1px solid #ffd0e3;
+    border-radius: 20px;
+    animation: cardAppear .8s ease both;
+}
+
+#message h2 {
+    color: var(--dark-pink);
+    font-size: 25px;
+    margin-bottom: 16px;
+}
+
+.message-text {
+    color: #74354f;
+    line-height: 2;
+    font-size: 14px;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+
+.signature {
+    display: block;
+    color: var(--dark-pink);
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+.footer {
+    color: #a16d85;
+    font-size: 11px;
+    margin-top: 25px;
+}
+
+/* MUSIC CONTROL */
+
+.music-control {
+    position: fixed;
+    right: 14px;
+    bottom: 14px;
+    z-index: 20;
+    background: #ffffffed;
+    color: #a52c65;
+    box-shadow: 0 5px 20px #71304a20;
+    font-size: 12px;
+    padding: 12px 16px;
+}
+
+/* FLOATING EMOJIS */
+
+.float {
+    position: fixed;
+    bottom: -50px;
+    pointer-events: none;
+    z-index: 10;
+    animation: floatUp linear forwards;
+    will-change: transform, opacity;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 380px) {
+    .card {
+        padding: 25px 15px;
+    }
+
+    .terminal {
+        padding: 17px;
+    }
+
+    #terminalText {
+        font-size: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC FILES -->
+<audio
+    id="introMusic"
+    src="music.mp3"
+    loop
+    preload="auto">
+</audio>
+
+<audio
+    id="messageMusic"
+    src="music2.mp3"
+    loop
+    preload="auto">
+</audio>
+
+<!-- START SCREEN -->
+<div id="startOverlay">
+    <h1 class="start-title">MOUSEEEEE.exe 🐭</h1>
+
+    <p class="start-description">
+        ⚠️ WARNING: BIRTHDAY GIRL DETECTED!<br>
+        Emotional damage may occur. 😂<br><br>
+        Are you ready for your highly unnecessary<br>
+        but extremely important birthday report?
+    </p>
+
+    <button class="primary-btn" onclick="startSurprise()">
+        START SURPRISE 🔊
+    </button>
+
+    <p class="start-note">
+        🎧 Sound on for the full experience
+    </p>
+</div>
+
+<!-- HACKER SCREEN -->
+<section id="hacker" class="hidden">
+    <div class="terminal">
+        <div class="terminal-header">
+            ● BIRTHDAY.exe — SECURE TERMINAL
+        </div>
+
+        <div class="terminal-subtitle">
+            PRIVATE OPERATION // JUST FOR FUN
+        </div>
+
+        <div id="terminalText"></div>
+
+        <div class="loading">
+            <div id="progress"></div>
+        </div>
+
+        <div class="terminal-footer">
+            SYSTEM STATUS: ROASTING IN PROGRESS...
+        </div>
+    </div>
+</section>
+
+<!-- BIRTHDAY REVEAL -->
+<section id="birthday" class="hidden">
+    <div class="card">
+
+        <div class="eyebrow">
+            A suspiciously special surprise ✨
+        </div>
+
+        <h1>
+            Happy Birthday,<br>
+            Muskan! 🎂
+        </h1>
+
+        <p class="subtitle">
+            Congratulations! You have levelled up! 🎮
+            <br>
+            Unfortunately, maturity is still downloading...
+            😂
+        </p>
+
+        <div class="warning-box">
+            <strong>📋 OFFICIAL BIRTHDAY REPORT</strong>
+            <br><br>
+               Hacking theme dekh ke ye mat sochna kuch hack ho gaya 
+            🧠 Brain cells: Currently on leave<br>
+            💅 Attitude: Premium subscription<br>
+            🎭 Drama: Unlimited free trial<br>
+            🐭 Pagalpan: Scientists are confused<br>
+            👑 Birthday status: VIP Nakhrewali
+        </div>
+
+        <p class="subtitle">
+            Ek gift hai tere liye...
+            <br>
+            Haan haan, free hai. Itna shock mat ho. 😂
+        </p>
+
+        <button
+            class="primary-btn"
+            onclick="showGift()">
+            UNLOCK YOUR GIFT 🎁
+        </button>
+
+        <!-- GIFT -->
+        <div id="giftArea" class="hidden">
+            <button
+                id="gift"
+                class="gift"
+                aria-label="Open your birthday gift"
+                onclick="revealMessage()">
+                🎁
+            </button>
+
+            <p class="subtitle">
+                Gift par tap kar, Mouseeeee! 🐭
+                <br>
+                Ismein bill nahi, beizzati hai. 😂
+            </p>
+        </div>
+
+        <!-- FINAL MESSAGE -->
+        <div id="message" class="hidden">
+            <h2>MUSKAN! 🐭💗</h2>
+
+            <p class="message-text">### 🚨 OYE MUSKANNN! 🐭💀
+
+Happy Birthday, Mouseeeee! 🎂😂
+
+Dekh, sabko birthday wish nahi karta main…
+**Tu khud ko lucky samajh ki maine apna keemti time nikaal ke tujhe wish kiya hai.** 😎🙏🏻
+
+Aaj tera birthday hai, isliye socha chalo…
+ek din ke liye tujhe importance de hi dete hain. 💅🏻😂
+
+Waise age badh rahi hai,
+par harkaton mein abhi bhi koi khaas improvement nahi hai. 🤡📈
+
+Bhagwan kare tujhe dher saari khushiyan milein,
+success mile, paisa mile,
+aur thoda sa dimaag bhi mil jaaye…
+kyunki baaki sab toh somehow manage kar hi rahi hai. 😭💀
+
+Aaj ka din enjoy kar,
+cake kha, photos kheench,
+aur aise behave kar jaise duniya tere birthday ka hi wait kar rahi thi. 😂🎂
+
+Aur haan, mera ye special birthday message padh ke emotional mat ho jaana…
+**itni bhi khaas nahi hai tu, madam.** 💀🙏🏻
+
+Chal ab zyada bhaav mat kha,
+birthday hai tera, VIP treatment nahi mila hai. 😂👑
+
+🎉 **HAPPY BIRTHDAY, MUSKAN!** 🎉
+
+Khush reh, successful ban,
+aur apni bakwaas personality ko aise hi maintain rakh. 🐭💗
+
+**Aaj ke liye meri taraf se itna hi ehsaan kaafi hai. ** 😎😂
+</p>
+
+            <span class="signature">
+                — From the person who see you in your childhood. 😎
+            </span>
+
+            <button
+                class="secondary-btn"
+                onclick="celebrate()">
+                EK AUR BEIZZATI? 😂🎉
+            </button>
+        </div>
+
+        <div class="footer">
+            Crafted with code, bakchodi & a little bit of affection. 💗
+        </div>
+
+    </div>
+</section>
+
+<!-- MUSIC CONTROL -->
+<button
+    id="musicButton"
+    class="music-control hidden"
+    onclick="toggleMusic()">
+    🔊 Pause Music
+</button>
+
+<script>
+"use strict";
+
+/* ELEMENTS */
+
+const startOverlay = document.getElementById("startOverlay");
+const hacker = document.getElementById("hacker");
+const birthday = document.getElementById("birthday");
+const terminalText = document.getElementById("terminalText");
+const progress = document.getElementById("progress");
+const giftArea = document.getElementById("giftArea");
+const message = document.getElementById("message");
+const musicButton = document.getElementById("musicButton");
+
+const introMusic = document.getElementById("introMusic");
+const messageMusic = document.getElementById("messageMusic");
+
+/* STATE */
+
+let started = false;
+let messageOpened = false;
+let currentMusic = null;
+let floatTimer = null;
+
+/* HACKER TERMINAL TEXT */
+
+const lines = [
+    "Initializing MOUSEEEEE.exe...",
+    "Connecting to birthday database...",
+    "Scanning subject: MUSKAN",
+    "Brain cells detected: Searching... 💀",
+    "Attitude level: NASA cannot measure it 🚀",
+    "Drama detected: 9999% 🎭",
+    "Roasting immunity: Under investigation 😂",
+    "Cuteness detected... unfortunately confirmed 🙄",
+    "Maturity status: Still loading...",
+    "Warning: One year older, still no improvement!",
+    "Birthday status: LEGENDARY 🎂",
+    "Preparing secret birthday message...",
+    "ACCESS GRANTED. HAPPY BIRTHDAY! 🎉"
+];
+
+/* START EXPERIENCE */
+
+async function startSurprise() {
+    if (started) return;
+
+    started = true;
+    startOverlay.classList.add("hidden");
+    hacker.classList.remove("hidden");
+
+    // Start the first music after the user's click.
+    currentMusic = introMusic;
+    introMusic.volume = 0.35;
+
+    try {
+        await introMusic.play();
+    } catch (error) {
+        console.log("Intro music unavailable:", error);
+    }
+
+    updateMusicButton();
+    runTerminal();
+}
+
+/* TERMINAL ANIMATION */
+
+let lineIndex = 0;
+
+function runTerminal() {
+    if (lineIndex < lines.length) {
+        terminalText.textContent +=
+            (lineIndex === 0 ? "> " : "\n\n> ") +
+            lines[lineIndex];
+
+        progress.style.width =
+            ((lineIndex + 1) / lines.length * 100) + "%";
+
+        lineIndex++;
+
+        setTimeout(runTerminal, 850);
+    } else {
+        setTimeout(() => {
+            hacker.classList.add("hidden");
+            birthday.classList.remove("hidden");
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+            startFloating();
+        }, 1100);
+    }
+}
+
+/* GIFT REVEAL */
+
+function showGift() {
+    giftArea.classList.remove("hidden");
+
+    giftArea.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+}
+
+/* MESSAGE + SECOND MUSIC */
+
+async function revealMessage() {
+    if (messageOpened) return;
+
+    messageOpened = true;
+
+    message.classList.remove("hidden");
+
+    // Stop the first track.
+    introMusic.pause();
+    introMusic.currentTime = 0;
+
+    // Play the softer track while the message is read.
+    currentMusic = messageMusic;
+    messageMusic.volume = 0.28;
+
+    try {
+        await messageMusic.play();
+    } catch (error) {
+        console.log("Message music unavailable:", error);
+    }
+
+    updateMusicButton();
+
+    message.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+    celebrate();
+}
+
+/* MUSIC CONTROL */
+
+function updateMusicButton() {
+    musicButton.classList.remove("hidden");
+
+    if (currentMusic && !currentMusic.paused) {
+        musicButton.textContent = "🔊 Pause Music";
+    } else {
+        musicButton.textContent = "▶️ Play Music";
+    }
+}
+
+async function toggleMusic() {
+    if (!currentMusic) return;
+
+    if (currentMusic.paused) {
+        try {
+            await currentMusic.play();
+        } catch (error) {
+            console.log("Unable to play music:", error);
+        }
+    } else {
+        currentMusic.pause();
+    }
+
+    updateMusicButton();
+}
+
+/* FLOATING EMOJIS */
+
+function createFloat() {
+    const el = document.createElement("div");
+
+    el.className = "float";
+
+    const emojis = ["💗", "🌸", "✨", "🎀", "💕", "🐭"];
+    el.textContent = emojis[
+        Math.floor(Math.random() * emojis.length)
+    ];
+
+    el.style.left = Math.random() * 96 + "vw";
+    el.style.fontSize = (16 + Math.random() * 19) + "px";
+    el.style.animationDuration = (5 + Math.random() * 4) + "s";
+
+    document.body.appendChild(el);
+
+    setTimeout(() => el.remove(), 9500);
+}
+
+function startFloating() {
+    if (floatTimer) return;
+
+    floatTimer = setInterval(createFloat, 650);
+}
+
+/* CONFETTI CELEBRATION */
+
+function celebrate() {
+    const emojis = ["🎉", "💖", "✨", "🎊", "🌸", "🐭", "🎂"];
+
+    for (let i = 0; i < 45; i++) {
+        const el = document.createElement("div");
+
+        el.className = "float";
+
+        el.textContent = emojis[
+            Math.floor(Math.random() * emojis.length)
+        ];
+
+        el.style.left = Math.random() * 96 + "vw";
+        el.style.bottom = Math.random() * 35 + "vh";
+        el.style.fontSize = (19 + Math.random() * 22) + "px";
+        el.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+        document.body.appendChild(el);
+
+        setTimeout(() => el.remove(), 7000);
+    }
+}
+</script>
+
+</body>
+</html>
+```
